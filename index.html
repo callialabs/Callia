@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callia — Atiende más. Trabaja menos.</title>
+  <meta name="description" content="Callia es tu recepcionista con IA. Agenda citas, responde llamadas y avisa por WhatsApp de forma automática, 24/7.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --purple: #534AB7; --purple-dark: #3C3489; --purple-light: #EEEDFE; --purple-xdark: #26215C; --green: #0F6E56; --green-light: #E1F5EE; --text: #1a1a2e; --text-sec: #555570; --text-ter: #9999bb; --border: #e0e0f0; --bg: #ffffff; --bg-sec: #f7f7fb; --radius: 14px; --radius-sm: 8px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    .hero { text-align: center; padding: 4rem 1.5rem 3rem; }
+    .logo-3d-wrap { display: flex; justify-content: center; margin-bottom: 1.5rem; perspective: 600px; }
+    .logo-3d { width: 100px; height: 100px; position: relative; transform-style: preserve-3d; animation: floatY 3s ease-in-out infinite; cursor: pointer; }
+    .logo-3d:hover { animation-play-state: paused; }
+    @keyframes floatY { 0%,100%{transform:rotateY(-10deg) rotateX(5deg)} 50%{transform:rotateY(10deg) rotateX(-5deg)} }
+    .logo-face { position: absolute; inset: 0; border-radius: 22px; display: flex; align-items: center; justify-content: center; }
+    .logo-face.front { background: var(--purple); transform: translateZ(8px); box-shadow: 0 0 0 1.5px #6C63FF; }
+    .logo-face.back { background: var(--purple-dark); transform: translateZ(-8px) rotateY(180deg); }
+    .logo-face.top { background: #6C63FF; height: 16px; top: 0; transform-origin: top; transform: rotateX(90deg) translateZ(0); border-radius: 22px 22px 0 0; }
+    .logo-face.bottom { background: var(--purple-xdark); height: 16px; bottom: 0; transform-origin: bottom; transform: rotateX(-90deg) translateZ(0); border-radius: 0 0 22px 22px; }
+    .logo-face.left { background: var(--purple-dark); width: 16px; left: 0; transform-origin: left; transform: rotateY(-90deg) translateZ(0); border-radius: 22px 0 0 22px; }
+    .logo-face.right { background: #453BA0; width: 16px; right: 0; transform-origin: right; transform: rotateY(90deg) translateZ(0); border-radius: 0 22px 22px 0; }
+    .logo-svg { width: 64px; height: 64px; }
+    .logo-name { font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 1rem; }
+    .hero-tag { display: inline-block; font-size: 12px; padding: 4px 12px; border-radius: 20px; background: var(--purple-light); color: var(--purple-dark); margin-bottom: 1.25rem; }
+    h1 { font-size: 42px; font-weight: 500; line-height: 1.15; margin-bottom: 1rem; }
+    h1 span { color: var(--purple); }
+    .hero-sub { font-size: 17px; color: var(--text-sec); max-width: 520px; margin: 0 auto 2rem; line-height: 1.6; }
+    .hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { padding: 11px 24px; background: var(--purple); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; font-weight: 500; }
+    .btn-secondary { padding: 11px 24px; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; }
+    .section { padding: 3rem 1.5rem; }
+    .section-label { font-size: 12px; color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; margin-bottom: 8px; }
+    .section-title { font-size: 26px; font-weight: 500; text-align: center; margin-bottom: 2rem; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; max-width: 720px; margin: 0 auto; }
+    .feat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .feat-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--purple-light); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+    .feat-icon i { font-size: 18px; color: var(--purple); }
+    .feat-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .feat-desc { font-size: 12px; color: var(--text-sec); line-height: 1.5; }
+    .divider { height: 1px; background: var(--border); max-width: 720px; margin: 0 auto; }
+    .launch-banner { max-width: 720px; margin: 0 auto 1.5rem; background: var(--purple-light); border: 1px solid #AFA9EC; border-radius: var(--radius); padding: 12px 20px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; text-align: center; }
+    .launch-banner i { color: var(--purple); font-size: 16px; }
+    .launch-banner-text { font-size: 13px; color: var(--purple-dark); font-weight: 500; }
+    .launch-banner-sub { font-size: 12px; color: var(--purple); }
+    .setup-box { max-width: 720px; margin: 0 auto 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .setup-left { display: flex; align-items: center; gap: 12px; }
+    .setup-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--purple-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .setup-icon i { font-size: 18px; color: var(--purple); }
+    .setup-title { font-size: 14px; font-weight: 500; }
+    .setup-desc { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+    .setup-old { font-size: 12px; color: var(--text-ter); text-decoration: line-through; text-align: right; }
+    .setup-new { font-size: 20px; font-weight: 500; color: var(--purple); }
+    .setup-new span { font-size: 12px; color: var(--text-sec); font-weight: 400; }
+    .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; max-width: 720px; margin: 0 auto; }
+    .plan { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .plan.featured { border: 2px solid var(--purple); }
+    .plan-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+    .plan-name { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+    .plan-old-price { font-size: 13px; color: var(--text-ter); text-decoration: line-through; margin-bottom: 2px; }
+    .plan-price { font-size: 28px; font-weight: 500; margin-bottom: 2px; }
+    .plan-price span { font-size: 13px; color: var(--text-sec); font-weight: 400; }
+    .plan-saving { font-size: 11px; color: var(--green); background: var(--green-light); padding: 2px 8px; border-radius: 20px; display: inline-block; margin-bottom: 4px; }
+    .plan-divider { height: 1px; background: var(--border); margin: 12px 0; }
+    .plan-feat { display: flex; align-items: flex-start; gap: 7px; margin-bottom: 7px; font-size: 12px; color: var(--text-sec); line-height: 1.4; }
+    .plan-feat i { color: var(--green); margin-top: 1px; flex-shrink: 0; }
+    .plan-btn { width: 100%; padding: 9px; border-radius: var(--radius-sm); font-size: 13px; cursor: pointer; margin-top: 14px; font-weight: 500; border: 1px solid var(--border); background: transparent; color: var(--text); }
+    .plan-btn.featured { background: var(--purple); color: #fff; border-color: var(--purple); }
+    .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; max-width: 720px; margin: 0 auto; }
+    .how-step { text-align: center; padding: 1rem; }
+    .how-num { width: 32px; height: 32px; border-radius: 50%; background: var(--purple-light); color: var(--purple-dark); font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+    .how-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+    .how-desc { font-size: 12px; color: var(--text-sec); line-height: 1.5; }
+    .team { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+    .member { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; text-align: center; min-width: 120px; }
+    .member-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--purple-light); color: var(--purple-dark); font-size: 15px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .member-name { font-size: 14px; font-weight: 500; }
+    .cta { text-align: center; padding: 3rem 1.5rem; background: var(--bg-sec); border-radius: var(--radius); max-width: 720px; margin: 0 auto 3rem; }
+    .cta-title { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+    .cta-sub { font-size: 14px; color: var(--text-sec); margin-bottom: 1.5rem; }
+    .cta-email { font-size: 13px; color: var(--text-sec); margin-top: 10px; }
+    .cta-email a { color: var(--purple); text-decoration: none; }
+    footer { text-align: center; padding: 1.5rem; font-size: 12px; color: var(--text-ter); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo-3d-wrap">
+    <div class="logo-3d" id="logo3d">
+      <div class="logo-face front">
+        <svg class="logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M38 14C28.06 14 20 22.06 20 32C20 41.94 28.06 50 38 50" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M46 22.5C46 22.5 43 26.5 43 32C43 37.5 46 41.5 46 41.5" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M51 26C51 26 49 29 49 32C49 35 51 38 51 38" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <path d="M56 29C56 29 55 30.5 55 32C55 33.5 56 35 56 35" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="logo-face back"></div>
+      <div class="logo-face top"></div>
+      <div class="logo-face bottom"></div>
+      <div class="logo-face left"></div>
+      <div class="logo-face right"></div>
+    </div>
+  </div>
+  <div class="logo-name">Callia</div>
+  <div class="hero-tag">Recepcionista con IA · 24/7</div>
+  <h1>Atiende más.<br><span>Trabaja menos.</span></h1>
+  <p class="hero-sub">Tu negocio nunca pierde una llamada. Callia agenda citas, responde preguntas y avisa por WhatsApp — de forma completamente automática.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('planes').scrollIntoView({behavior:'smooth'})">Ver planes</button>
+    <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablar con nosotros</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p class="section-label">Funciones</p>
+  <h2 class="section-title">Todo lo que necesita tu negocio</h2>
+  <div class="features">
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-calendar"></i></div><div class="feat-title">Agendado automático</div><div class="feat-desc">Reserva, modifica y cancela citas por voz en tiempo real.</div></div>
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-brand-whatsapp"></i></div><div class="feat-title">WhatsApp y email</div><div class="feat-desc">Confirmaciones y recordatorios automáticos a tus clientes.</div></div>
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-clock-24"></i></div><div class="feat-title">Disponible 24/7</div><div class="feat-desc">Atiende llamadas a cualquier hora, incluso festivos.</div></div>
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-chart-bar"></i></div><div class="feat-title">CRM automático</div><div class="feat-desc">Registra cada llamada con resumen, motivo y datos del cliente.</div></div>
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-users"></i></div><div class="feat-title">Clientes recurrentes</div><div class="feat-desc">Reconoce a tus clientes habituales y los trata de forma especial.</div></div>
+    <div class="feat-card"><div class="feat-icon"><i class="ti ti-transfer"></i></div><div class="feat-title">Transferencia a humano</div><div class="feat-desc">Pasa la llamada a tu equipo cuando sea necesario.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" id="planes">
+  <p class="section-label">Planes</p>
+  <h2 class="section-title">Elige el plan de tu negocio</h2>
+  <div class="launch-banner">
+    <i class="ti ti-bolt"></i>
+    <div><div class="launch-banner-text">Oferta de lanzamiento — plazas limitadas</div><div class="launch-banner-sub">Precios especiales para los primeros clientes. No durará mucho.</div></div>
+  </div>
+  <div class="setup-box">
+    <div class="setup-left">
+      <div class="setup-icon"><i class="ti ti-settings"></i></div>
+      <div><div class="setup-title">Setup e instalación</div><div class="setup-desc">Configuración completa, personalización y prueba en directo. Pago único al contratar.</div></div>
+    </div>
+    <div><div class="setup-old">299€</div><div class="setup-new">199€ <span>pago único</span></div></div>
+  </div>
+  <div class="plans">
+    <div class="plan">
+      <span class="plan-tag" style="background:#F1EFE8;color:#444441;">Económico</span>
+      <div class="plan-name">Económico</div>
+      <div class="plan-old-price">199€/mes</div>
+      <div class="plan-price">149€ <span>/mes</span></div>
+      <span class="plan-saving">Ahorras 50€/mes</span>
+      <div class="plan-divider"></div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Atención 24/7</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Detección de motivo</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Horario inteligente</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Buzón de voz + email</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>2 idiomas</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Resumen de llamadas</div>
+      <button class="plan-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Empezar</button>
+    </div>
+    <div class="plan featured">
+      <span class="plan-tag" style="background:#EEEDFE;color:#3C3489;">⭐ Más popular</span>
+      <div class="plan-name">Esencial</div>
+      <div class="plan-old-price">399€/mes</div>
+      <div class="plan-price">299€ <span>/mes</span></div>
+      <span class="plan-saving">Ahorras 100€/mes</span>
+      <div class="plan-divider"></div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Todo lo del Económico</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Agendado de citas</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>WhatsApp automático</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Google Calendar</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Clientes VIP</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Filtro de llamadas</div>
+      <button class="plan-btn featured" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Empezar</button>
+    </div>
+    <div class="plan">
+      <span class="plan-tag" style="background:#FAECE7;color:#712B13;">Empresarial</span>
+      <div class="plan-name">Empresarial</div>
+      <div class="plan-old-price">799€/mes</div>
+      <div class="plan-price">599€ <span>/mes</span></div>
+      <span class="plan-saving">Ahorras 200€/mes</span>
+      <div class="plan-divider"></div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Todo lo del Esencial</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Llamadas salientes</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>CRM completo</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Dashboard en tiempo real</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Múltiples sedes</div>
+      <div class="plan-feat"><i class="ti ti-check"></i>Soporte prioritario</div>
+      <button class="plan-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Empezar</button>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p class="section-label">Cómo funciona</p>
+  <h2 class="section-title">En marcha en 48 horas</h2>
+  <div class="how">
+    <div class="how-step"><div class="how-num">1</div><div class="how-title">Nos cuentas tu negocio</div><div class="how-desc">Servicios, horario, tono de marca. Nosotros configuramos todo.</div></div>
+    <div class="how-step"><div class="how-num">2</div><div class="how-title">Configuramos tu bot</div><div class="how-desc">Personalizamos el asistente con la voz y estilo de tu negocio.</div></div>
+    <div class="how-step"><div class="how-num">3</div><div class="how-title">Lo probamos juntos</div><div class="how-desc">Hacemos una llamada de prueba contigo antes de activarlo.</div></div>
+    <div class="how-step"><div class="how-num">4</div><div class="how-title">Tu negocio nunca duerme</div><div class="how-desc">El bot atiende desde el primer día. Tú solo supervisas.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <p class="section-label">El equipo</p>
+  <h2 class="section-title">Quiénes somos</h2>
+  <div class="team">
+    <div class="member"><div class="member-avatar">E</div><div class="member-name">Eric</div></div>
+    <div class="member"><div class="member-avatar">T</div><div class="member-name">Teo</div></div>
+    <div class="member"><div class="member-avatar">J</div><div class="member-name">Jorge</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" id="contacto">
+  <div class="cta">
+    <div class="cta-title">¿Listo para no perder más llamadas?</div>
+    <p class="cta-sub">Escríbenos y te hacemos una demo en directo. Sin compromiso.</p>
+    <button class="btn-primary" onclick="window.location.href='mailto:callia.labs@gmail.com'">Contactar ahora</button>
+    <div class="cta-email">O escríbenos a <a href="mailto:callia.labs@gmail.com">callia.labs@gmail.com</a></div>
+  </div>
+</div>
+
+<footer>© 2026 Callia · Todos los derechos reservados</footer>
+
+<script>
+  const logo = document.getElementById('logo3d');
+  let isDragging = false, startX = 0, startY = 0, rotX = 5, rotY = -10;
+  logo.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; startY = e.clientY; logo.style.animation = 'none'; });
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    rotY += (e.clientX - startX) * 0.8;
+    rotX -= (e.clientY - startY) * 0.8;
+    startX = e.clientX; startY = e.clientY;
+    logo.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+  });
+  window.addEventListener('mouseup', () => {
+    if (isDragging) { isDragging = false; setTimeout(() => { logo.style.animation = ''; logo.style.transform = ''; }, 1500); }
+  });
+</script>
+</body>
+</html>
