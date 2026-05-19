@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personaliza tu bot — Callia</title>
+  <meta name="description" content="Cuéntanos sobre tu negocio y te recomendamos el plan ideal para tu bot de llamadas con IA.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --purple: #534AB7; --purple-dark: #3C3489; --purple-light: #EEEDFE; --green: #0F6E56; --green-light: #E1F5EE; --text: #1a1a2e; --text-sec: #555570; --text-ter: #9999bb; --border: #e0e0f0; --bg: #ffffff; --bg-sec: #f7f7fb; --radius: 14px; --radius-sm: 8px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg-sec); color: var(--text); line-height: 1.5; min-height: 100vh; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .topbar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .topbar-icon { width: 32px; height: 32px; background: var(--purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .topbar-icon i { font-size: 16px; color: #fff; }
+    .topbar-name { font-size: 18px; font-weight: 500; color: var(--text); }
+    .topbar-back { font-size: 13px; color: var(--text-sec); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+    .form-wrap { max-width: 580px; margin: 2rem auto; padding: 0 1.5rem 3rem; }
+    .form-header { text-align: center; margin-bottom: 2rem; }
+    .form-tag { display: inline-block; font-size: 12px; padding: 4px 12px; border-radius: 20px; background: var(--purple-light); color: var(--purple-dark); margin-bottom: 10px; }
+    .form-title { font-size: 24px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .form-sub { font-size: 14px; color: var(--text-sec); }
+    .card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+    .step { display: none; }
+    .step.active { display: block; }
+    .step-label { font-size: 11px; color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; font-weight: 500; }
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+    .field input, .field textarea, .field select { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; color: var(--text); background: var(--bg); outline: none; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--purple); }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field-hint { font-size: 12px; color: var(--text-ter); margin-top: 4px; }
+    .radio-group, .check-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-opt, .check-opt { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; font-size: 13px; color: var(--text); transition: border-color 0.15s; }
+    .radio-opt:hover, .check-opt:hover { border-color: var(--purple); }
+    .radio-opt.selected, .check-opt.selected { border-color: var(--purple); background: var(--purple-light); color: var(--purple-dark); }
+    .radio-opt input, .check-opt input { display: none; }
+    .nav { display: flex; gap: 10px; margin-top: 1.5rem; }
+    .btn-next { flex: 1; padding: 11px; background: var(--purple); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-back { padding: 11px 18px; background: transparent; color: var(--text-sec); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; }
+    .progress { display: flex; gap: 6px; margin-bottom: 1.5rem; }
+    .prog-dot { flex: 1; height: 4px; border-radius: 2px; background: var(--border); }
+    .prog-dot.done { background: var(--purple); }
+    .result-card { background: var(--bg); border: 2px solid var(--purple); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin-bottom: 1.25rem; }
+    .result-plan { font-size: 11px; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 8px; }
+    .result-name { font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .result-old { font-size: 13px; color: var(--text-ter); text-decoration: line-through; }
+    .result-price { font-size: 32px; font-weight: 500; color: var(--purple); margin-bottom: 4px; }
+    .result-price span { font-size: 14px; color: var(--text-sec); font-weight: 400; }
+    .result-saving { font-size: 12px; color: var(--green); background: var(--green-light); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+    .result-setup { font-size: 13px; color: var(--text-sec); padding: 10px; background: var(--bg-sec); border-radius: var(--radius-sm); margin-bottom: 12px; }
+    .result-desc { font-size: 13px; color: var(--text-sec); line-height: 1.5; }
+    .result-feats { text-align: left; margin-top: 12px; }
+    .result-feat { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--text-sec); margin-bottom: 6px; }
+    .result-feat i { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+    .btn-contact { width: 100%; padding: 12px; background: var(--purple); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; }
+    .btn-contact-sec { width: 100%; padding: 11px; background: transparent; color: var(--text-sec); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; cursor: pointer; margin-top: 8px; }
+    .summary-box { background: var(--bg-sec); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem; font-size: 13px; color: var(--text-sec); line-height: 1.8; }
+    .summary-box strong { color: var(--text); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="topbar-logo" href="index.html">
+    <div class="topbar-icon"><i class="ti ti-phone-call"></i></div>
+    <span class="topbar-name">Callia</span>
+  </a>
+  <a class="topbar-back" href="index.html"><i class="ti ti-arrow-left"></i> Volver</a>
+</div>
+
+<div class="form-wrap">
+  <div class="form-header">
+    <div class="form-tag">Personaliza tu bot</div>
+    <div class="form-title">Cuéntanos sobre tu negocio</div>
+    <div class="form-sub">En 2 minutos configuramos tu asistente ideal</div>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <div class="card">
+
+    <div class="step active" id="step-0">
+      <div class="step-label">Paso 1 de 4 — Datos del negocio</div>
+      <div class="field"><label>Nombre del negocio</label><input type="text" id="f-nombre" placeholder="Ej: Clínica Dental Sonrisa"></div>
+      <div class="field"><label>Sector / tipo de negocio</label>
+        <select id="f-sector">
+          <option value="">Selecciona...</option>
+          <option>Clínica / salud</option>
+          <option>Peluquería / estética</option>
+          <option>Restaurante / hostelería</option>
+          <option>Asesoría / consultoría</option>
+          <option>Fisioterapia / deporte</option>
+          <option>Inmobiliaria</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="field"><label>Dirección</label><input type="text" id="f-dir" placeholder="Calle, número, ciudad"></div>
+      <div class="field"><label>Horario de atención</label><input type="text" id="f-horario" placeholder="Ej: Lunes a viernes 9:00–20:00, sábados 10:00–14:00"></div>
+      <div class="field"><label>Email de contacto</label><input type="email" id="f-email" placeholder="tu@negocio.com"></div>
+      <div class="field"><label>¿Tienes Gmail? ¿Cuál?</label><input type="email" id="f-gmail" placeholder="tu@gmail.com"><div class="field-hint">Lo necesitamos para compartirte el calendario y los registros de llamadas</div></div>
+      <div class="nav"><button class="btn-next" onclick="next(0)">Continuar →</button></div>
+    </div>
+
+    <div class="step" id="step-1">
+      <div class="step-label">Paso 2 de 4 — Tu negocio</div>
+      <div class="field"><label>Servicios y precios</label><textarea id="f-servicios" placeholder="Ej: Corte de pelo 25€, Tinte completo 60€, Manicura 20€..."></textarea></div>
+      <div class="field"><label>¿Cuántas llamadas recibes aproximadamente al día?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-llamadas','Menos de 10')"><input type="radio" name="llamadas">Menos de 10</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-llamadas','Entre 10 y 30')"><input type="radio" name="llamadas">Entre 10 y 30</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-llamadas','Más de 30')"><input type="radio" name="llamadas">Más de 30</label>
+        </div>
+      </div>
+      <div class="field"><label>Teléfono del responsable (para transferencias)</label><input type="tel" id="f-tel" placeholder="+34 600 000 000"><div class="field-hint">El bot transferirá las llamadas importantes a este número</div></div>
+      <div class="nav"><button class="btn-back" onclick="back(1)">← Atrás</button><button class="btn-next" onclick="next(1)">Continuar →</button></div>
+    </div>
+
+    <div class="step" id="step-2">
+      <div class="step-label">Paso 3 de 4 — Preferencias del bot</div>
+      <div class="field"><label>¿Cómo quieres que suene tu bot?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-tono','Formal y profesional')"><input type="radio" name="tono">Formal y profesional</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-tono','Cercano y amigable')"><input type="radio" name="tono">Cercano y amigable</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-tono','Dinámico y moderno')"><input type="radio" name="tono">Dinámico y moderno</label>
+        </div>
+      </div>
+      <div class="field"><label>¿En qué idiomas quieres que atienda?</label>
+        <div class="check-group">
+          <label class="check-opt" onclick="toggleCheck(this,'Español')"><input type="checkbox">Español</label>
+          <label class="check-opt" onclick="toggleCheck(this,'Inglés')"><input type="checkbox">Inglés</label>
+          <label class="check-opt" onclick="toggleCheck(this,'Catalán')"><input type="checkbox">Catalán</label>
+          <label class="check-opt" onclick="toggleCheck(this,'Francés')"><input type="checkbox">Francés</label>
+        </div>
+      </div>
+      <div class="field"><label>¿Qué nombre quieres que tenga el bot?</label><input type="text" id="f-botname" placeholder="Ej: Sara, Luna, Alex..."></div>
+      <div class="nav"><button class="btn-back" onclick="back(2)">← Atrás</button><button class="btn-next" onclick="next(2)">Continuar →</button></div>
+    </div>
+
+    <div class="step" id="step-3">
+      <div class="step-label">Paso 4 de 4 — Funciones que necesitas</div>
+      <div class="field"><label>¿Necesitas que el bot agende citas automáticamente?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-citas','Sí')"><input type="radio" name="citas">Sí, es clave para mi negocio</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-citas','No')"><input type="radio" name="citas">No, solo necesito que atienda llamadas</label>
+        </div>
+      </div>
+      <div class="field"><label>¿Quieres confirmaciones automáticas por WhatsApp?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-wa','Sí')"><input type="radio" name="wa">Sí</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-wa','No')"><input type="radio" name="wa">No</label>
+        </div>
+      </div>
+      <div class="field"><label>¿Necesitas que el bot haga llamadas salientes?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-out','Sí')"><input type="radio" name="out">Sí (seguimientos, confirmaciones, prospección)</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-out','No')"><input type="radio" name="out">No, solo llamadas entrantes</label>
+        </div>
+      </div>
+      <div class="field"><label>¿Tienes más de una sede o número de teléfono?</label>
+        <div class="radio-group">
+          <label class="radio-opt" onclick="selectRadio(this,'f-sedes','Sí')"><input type="radio" name="sedes">Sí</label>
+          <label class="radio-opt" onclick="selectRadio(this,'f-sedes','No')"><input type="radio" name="sedes">No, solo una</label>
+        </div>
+      </div>
+      <div class="nav"><button class="btn-back" onclick="back(3)">← Atrás</button><button class="btn-next" onclick="showResult()">Ver mi plan recomendado →</button></div>
+    </div>
+
+    <div class="step" id="step-result">
+      <div class="step-label">Tu plan recomendado</div>
+      <div id="result-box"></div>
+      <div class="summary-box" id="summary-box"></div>
+      <button class="btn-contact" onclick="window.location.href='mailto:callia.labs@gmail.com?subject=Quiero contratar Callia — '+encodeURIComponent(document.getElementById('f-nombre').value)+'&body='+encodeURIComponent(buildEmail())">Quiero este plan — Contactar ahora</button>
+      <button class="btn-contact-sec" onclick="window.location.href='mailto:callia.labs@gmail.com?subject=Tengo dudas sobre Callia&body='+encodeURIComponent(buildEmail())">Tengo dudas, prefiero que me llaméis</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const data = { llamadas:'', tono:'', citas:'', wa:'', out:'', sedes:'', idiomas:[] };
+const STEPS = 4;
+
+function buildProgress(current) {
+  const p = document.getElementById('progress');
+  p.innerHTML = '';
+  for (let i = 0; i < STEPS; i++) {
+    const d = document.createElement('div');
+    d.className = 'prog-dot' + (i <= current ? ' done' : '');
+    p.appendChild(d);
+  }
+}
+
+function selectRadio(el, key, val) {
+  document.querySelectorAll('[name="'+el.querySelector('input').name+'"]').forEach(r => r.closest('.radio-opt').classList.remove('selected'));
+  el.classList.add('selected');
+  data[key] = val;
+}
+
+function toggleCheck(el, val) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) { if (!data.idiomas.includes(val)) data.idiomas.push(val); }
+  else { data.idiomas = data.idiomas.filter(v => v !== val); }
+}
+
+function next(step) {
+  document.getElementById('step-'+step).classList.remove('active');
+  document.getElementById('step-'+(step+1)).classList.add('active');
+  buildProgress(step+1);
+  window.scrollTo(0,0);
+}
+
+function back(step) {
+  document.getElementById('step-'+step).classList.remove('active');
+  document.getElementById('step-'+(step-1)).classList.add('active');
+  buildProgress(step-2);
+  window.scrollTo(0,0);
+}
+
+function calcPlan() {
+  if (data.out === 'Sí' || data.sedes === 'Sí') return 'empresarial';
+  if (data.citas === 'Sí' || data.wa === 'Sí') return 'esencial';
+  return 'economico';
+}
+
+const planes = {
+  economico: { nombre:'Económico', old:'199€/mes', precio:'149€', saving:'Ahorras 50€/mes', color:'#F1EFE8', textcolor:'#444441', desc:'Perfecto para negocios que necesitan atención 24/7 sin gestión de citas.', feats:['Atención 24/7','Detección de motivo de llamada','Horario inteligente','Buzón de voz + transcripción email','2 idiomas','Resumen de cada llamada'] },
+  esencial: { nombre:'Esencial', old:'399€/mes', precio:'299€', saving:'Ahorras 100€/mes', color:'#EEEDFE', textcolor:'#3C3489', desc:'El más completo para negocios con citas. Agenda, confirma y recuerda automáticamente.', feats:['Todo lo del Económico','Agendado automático de citas','Confirmaciones por WhatsApp','Google Calendar integrado','Clientes VIP con trato especial','Filtro de llamadas'] },
+  empresarial: { nombre:'Empresarial', old:'799€/mes', precio:'599€', saving:'Ahorras 200€/mes', color:'#FAECE7', textcolor:'#712B13', desc:'Para negocios que quieren el máximo. Llamadas salientes, CRM completo y múltiples sedes.', feats:['Todo lo del Esencial','Llamadas salientes automáticas','CRM completo integrado','Dashboard en tiempo real','Múltiples sedes o números','Soporte prioritario + ajustes mensuales'] }
+};
+
+function showResult() {
+  document.getElementById('step-3').classList.remove('active');
+  document.getElementById('step-result').classList.add('active');
+  buildProgress(4);
+  window.scrollTo(0,0);
+  const plan = calcPlan();
+  const p = planes[plan];
+  document.getElementById('result-box').innerHTML = `
+    <div class="result-card">
+      <span class="result-plan" style="background:${p.color};color:${p.textcolor};">${p.nombre}</span>
+      <div class="result-name">${p.nombre}</div>
+      <div class="result-old">${p.old}</div>
+      <div class="result-price">${p.precio} <span>/mes</span></div>
+      <span class="result-saving">${p.saving}</span>
+      <div class="result-setup">+ Setup e instalación: <del>299€</del> <strong style="color:#534AB7">199€ pago único</strong></div>
+      <div class="result-desc">${p.desc}</div>
+      <div class="result-feats">${p.feats.map(f=>`<div class="result-feat"><i class="ti ti-check"></i>${f}</div>`).join('')}</div>
+    </div>`;
+  const nombre = document.getElementById('f-nombre').value || 'Tu negocio';
+  const sector = document.getElementById('f-sector').value || '—';
+  const botname = document.getElementById('f-botname').value || '—';
+  document.getElementById('summary-box').innerHTML = `<strong>Negocio:</strong> ${nombre} · <strong>Sector:</strong> ${sector} · <strong>Bot:</strong> ${botname} · <strong>Tono:</strong> ${data.tono||'—'} · <strong>Idiomas:</strong> ${data.idiomas.join(', ')||'—'} · <strong>Plan:</strong> ${p.nombre}`;
+}
+
+function buildEmail() {
+  return `Datos del negocio:\nNombre: ${document.getElementById('f-nombre').value}\nSector: ${document.getElementById('f-sector').value}\nDirección: ${document.getElementById('f-dir').value}\nHorario: ${document.getElementById('f-horario').value}\nEmail: ${document.getElementById('f-email').value}\nGmail: ${document.getElementById('f-gmail').value}\nTeléfono: ${document.getElementById('f-tel').value}\n\nServicios: ${document.getElementById('f-servicios').value}\n\nPreferencias del bot:\nNombre del bot: ${document.getElementById('f-botname').value}\nTono: ${data.tono}\nIdiomas: ${data.idiomas.join(', ')}\nLlamadas/día: ${data.llamadas}\n\nFunciones:\nCitas automáticas: ${data.citas}\nWhatsApp: ${data.wa}\nLlamadas salientes: ${data.out}\nVarias sedes: ${data.sedes}\n\nPlan recomendado: ${planes[calcPlan()].nombre} — ${planes[calcPlan()].precio}/mes`;
+}
+
+buildProgress(0);
+</script>
+</body>
+</html>
