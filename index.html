@@ -60,7 +60,6 @@
     box-shadow:0 0 0 4px rgba(78,217,176,.18);
   }
   :focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px;}
-
   /* ---------- NAV ---------- */
   header{
     position:sticky;top:0;z-index:50;
@@ -107,7 +106,6 @@
   @media (max-width:520px){
     .nav-cta .btn-primary{padding:11px 16px;font-size:13px;}
   }
-
   /* ---------- BUTTONS ---------- */
   .btn{
     font-family:var(--font-body);font-weight:600;font-size:14.5px;
@@ -125,7 +123,6 @@
   .btn-mint:hover{background:#63e6c1;}
   .btn-sm{padding:9px 16px;font-size:13.5px;}
   .btn-block{width:100%;justify-content:center;}
-
   /* ---------- HERO ---------- */
   .hero{
     padding:88px 0 70px;
@@ -156,7 +153,6 @@
     font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);letter-spacing:.03em;
   }
   .trust-row strong{color:var(--text);font-family:var(--font-body);font-weight:700;font-size:15px;display:block;}
-
   /* --- Signature hero visual: call -> confirmed waveform --- */
   .call-visual{
     position:relative;background:var(--ink-2);
@@ -180,7 +176,6 @@
   }
   .live-pill span{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:pulse 1.4s infinite;}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
   .waveform{display:flex;align-items:center;gap:4px;height:88px;justify-content:center;}
   .waveform i{
     display:block;width:5px;border-radius:3px;
@@ -200,7 +195,6 @@
   .waveform i:nth-child(10){height:34px;animation-delay:-0.5s;}
   .waveform i:nth-child(11){height:66px;animation-delay:-0.2s;}
   @keyframes wave{0%,100%{transform:scaleY(.35);}50%{transform:scaleY(1);}}
-
   .call-outcome{
     display:flex;align-items:center;justify-content:space-between;
     background:var(--ink-3);border:1px solid var(--line);border-radius:14px;
@@ -226,20 +220,17 @@
   .f2 .badge-icon{background:rgba(78,217,176,.2);}
   .frame-left{display:flex;align-items:center;}
   .tag{font-family:var(--font-mono);font-size:11px;color:var(--mint);}
-
   @media (prefers-reduced-motion: reduce){
     .waveform i,.live-pill span,.outcome-frame{animation:none !important;}
     .outcome-frame.f2{opacity:1;}
     .outcome-frame.f1{display:none;}
   }
-
   /* ---------- SECTION SHELL ---------- */
   section{padding:96px 0;}
   .section-head{max-width:620px;margin-bottom:52px;}
   .section-head h2{font-size:clamp(28px,3.4vw,40px);color:var(--text);}
   .section-head p{color:var(--text-muted);font-size:16.5px;margin-top:14px;}
   #funciones{border-bottom:1px solid var(--line);}
-
   /* ---------- FEATURES ---------- */
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;}
   @media (max-width:860px){ .feat-grid{grid-template-columns:repeat(2,1fr);} }
@@ -252,7 +243,6 @@
   }
   .feat h3{font-family:var(--font-body);font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;}
   .feat p{margin:0;color:var(--text-muted);font-size:14.5px;}
-
   /* ---------- HOW IT WORKS ---------- */
   #como-funciona{border-bottom:1px solid var(--line);}
   .steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
@@ -265,7 +255,6 @@
   }
   .step h3{font-size:17px;color:var(--text);margin-bottom:8px;font-family:var(--font-body);font-weight:700;}
   .step p{color:var(--text-muted);font-size:14.5px;margin:0;}
-
   /* ---------- PRICING ---------- */
   .launch-banner{
     display:inline-flex;align-items:center;gap:10px;
@@ -295,7 +284,6 @@
   .plan li{display:flex;gap:10px;font-size:14px;color:var(--text);align-items:flex-start;}
   .plan li svg{flex-shrink:0;margin-top:2px;color:var(--mint);}
   .plan li.dim{color:var(--text-muted);}
-
   /* ---------- FORM ---------- */
   #formulario{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2);}
   .form-shell{
@@ -310,7 +298,6 @@
   .form-side .why-item{display:flex;gap:12px;font-size:14px;color:var(--text-muted);}
   .form-side .why-item svg{color:var(--mint);flex-shrink:0;margin-top:2px;}
   .form-side .why-item b{color:var(--text);display:block;font-size:14.5px;margin-bottom:2px;}
-
   .form-main{padding:44px 44px;}
   .progress{display:flex;gap:8px;margin-bottom:30px;}
   .progress i{flex:1;height:4px;border-radius:3px;background:var(--line);}
@@ -343,7 +330,6 @@
   .fnav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;}
   .fnav .back{background:none;border:none;color:var(--text-muted);font-size:14px;cursor:pointer;font-weight:600;}
   .fnav .back:disabled{opacity:0;pointer-events:none;}
-
   .reco-card{
     border:1px solid var(--mint);background:rgba(78,217,176,.07);
     border-radius:16px;padding:22px 24px;margin-bottom:22px;
@@ -352,7 +338,6 @@
   .reco-card h4{font-family:var(--font-display);font-size:24px;color:var(--text);margin:0 0 4px;}
   .reco-card .rprice{font-size:14.5px;color:var(--text-muted);margin-bottom:12px;}
   .reco-card .rwhy{font-size:13.5px;color:var(--text-muted);}
-
   .form-success{display:none;text-align:center;padding:20px 0;}
   .form-success.active{display:block;}
   .form-success .ic{
@@ -361,7 +346,6 @@
   }
   .form-success h3{font-size:20px;color:var(--text);margin-bottom:8px;}
   .form-success p{color:var(--text-muted);font-size:14.5px;max-width:360px;margin:0 auto 20px;}
-
   /* ---------- FINAL CTA ---------- */
   .final-cta{text-align:center;padding:100px 0;}
   .final-cta h2{font-size:clamp(30px,4vw,44px);color:var(--text);max-width:640px;margin:0 auto 16px;}
@@ -369,7 +353,6 @@
   .final-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
   .final-cta .alt{margin-top:24px;font-size:14px;color:var(--text-muted);}
   .final-cta .alt button{background:none;border:none;color:var(--mint);font-weight:600;cursor:pointer;font-size:14px;text-decoration:underline;text-underline-offset:3px;}
-
   /* ---------- FOOTER ---------- */
   footer{border-top:1px solid var(--line);padding:36px 0;}
   .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:var(--text-muted);font-size:13.5px;}
@@ -378,7 +361,6 @@
 </style>
 </head>
 <body>
-
 <header>
   <nav>
     <a class="logo" href="#inicio"><span class="dot"></span>Callia</a>
@@ -394,7 +376,6 @@
     </div>
   </nav>
 </header>
-
 <section class="hero" id="inicio">
   <div class="wrap hero-grid">
     <div>
@@ -411,7 +392,6 @@
         <div><strong>2 idiomas</strong>incluidos desde el plan Económico</div>
       </div>
     </div>
-
     <div class="call-visual">
       <div class="row1">
         <div class="caller"><span class="avatar">MG</span> María González</div>
@@ -443,7 +423,6 @@
     </div>
   </div>
 </section>
-
 <section id="funciones">
   <div class="wrap">
     <div class="section-head">
@@ -485,7 +464,6 @@
     </div>
   </div>
 </section>
-
 <section id="como-funciona">
   <div class="wrap">
     <div class="section-head">
@@ -517,14 +495,14 @@
     </div>
   </div>
 </section>
-
 <section id="precios">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Planes</span>
       <div class="launch-banner">🚀 Oferta de lanzamiento — plazas limitadas</div>
       <h2>Elige el plan de tu negocio</h2>
-      <p>Precios especiales para los primeros clientes. Setup e instalación (configuración completa, personalización y prueba en directo) es un pago único de 299&nbsp;€, ahora en <strong style="color:var(--text)">199&nbsp;€</strong> al contratar cualquier plan.</p>
+      <p>Precios especiales para los primeros clientes. Setup e instalación (configuración completa, personalización y prueba en directo) es un pago único de 299&nbsp;€, ahora en <strong style="color:var(--text)">199&nbsp;€</strong> al contratar cualquier plan. Sin límite de minutos, sin sorpresas en tu factura.</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">🔒 Tus datos y los de tus clientes se tratan conforme al RGPD, almacenados de forma segura en la UE.</p>
     </div>
     <div class="pricing-grid">
       <div class="plan">
@@ -533,15 +511,14 @@
         <div class="save">Ahorras 50€/mes</div>
         <ul>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Atención 24/7</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Detección de motivo</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Horario inteligente</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Identifica por qué te llaman</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Solo atiende dentro de tu horario</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Buzón de voz + email</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>2 idiomas</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Resumen de llamadas</li>
         </ul>
         <a class="btn btn-ghost btn-block" href="#formulario">Empezar</a>
       </div>
-
       <div class="plan popular">
         <span class="badge-pop">⭐ Más popular</span>
         <h3>Esencial</h3>
@@ -557,7 +534,6 @@
         </ul>
         <a class="btn btn-primary btn-block" href="#formulario">Empezar</a>
       </div>
-
       <div class="plan">
         <h3>Empresarial</h3>
         <div class="price"><span class="now">599€</span><span class="before">799€</span></div>
@@ -565,8 +541,8 @@
         <ul>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Todo lo del Esencial</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Llamadas salientes</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CRM completo</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Dashboard en tiempo real</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Ficha automática de cada cliente</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Panel con tus estadísticas</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Múltiples sedes</li>
           <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Soporte prioritario</li>
         </ul>
@@ -575,7 +551,58 @@
     </div>
   </div>
 </section>
-
+<section id="comparativa">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Comparativa</span>
+      <h2>Recepcionista humana vs Callia</h2>
+      <p>Los números hablan solos. Esto es lo que cambia cuando dejas de depender de una sola persona para atender el teléfono.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;background:var(--ink-2);border:1px solid var(--line);border-radius:20px;overflow:hidden;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--line);">
+            <th style="text-align:left;padding:18px 24px;font-family:var(--font-body);font-size:13px;color:var(--text-muted);font-weight:600;">&nbsp;</th>
+            <th style="text-align:left;padding:18px 24px;font-family:var(--font-body);font-size:14.5px;color:var(--text-muted);font-weight:700;">Recepcionista humana</th>
+            <th style="text-align:left;padding:18px 24px;font-family:var(--font-display);font-size:17px;color:var(--mint);font-weight:700;">Callia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line);">
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Disponibilidad</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">Horario laboral, festivos cerrado</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">24/7, todo el año</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);">
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Coste mensual</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">1.400€ – 1.800€ (sueldo + SS)</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">Desde 149€/mes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);">
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Llamadas a la vez</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">Una por una</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">Ilimitadas, en paralelo</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);">
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Vacaciones y bajas</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">Cobertura necesaria</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">Nunca falta</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line);">
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Tiempo de puesta en marcha</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">Semanas de selección + formación</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">Activo en 48 horas</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);font-weight:600;">Escalabilidad</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text-muted);">Contratar a más gente</td>
+            <td style="padding:16px 24px;font-size:14px;color:var(--text);">Cambio de plan, sin más</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 <section id="formulario">
   <div class="wrap">
     <div class="form-shell">
@@ -598,7 +625,6 @@
           </div>
         </div>
       </div>
-
       <div class="form-main">
         <div id="formActive">
           <div class="progress">
@@ -606,7 +632,6 @@
             <i class="p-bar" data-step="2"></i>
             <i class="p-bar" data-step="3"></i>
           </div>
-
           <!-- STEP 1 -->
           <div class="fstep active" data-step="1">
             <h3>¿Cuántas llamadas recibe tu negocio al mes?</h3>
@@ -618,7 +643,6 @@
               <label class="opt"><input type="radio" name="volume" value="muyalta"> Más de 400</label>
             </div>
           </div>
-
           <!-- STEP 2 -->
           <div class="fstep" data-step="2">
             <h3>¿Qué quieres que haga Callia?</h3>
@@ -634,7 +658,6 @@
               <label class="opt"><input type="checkbox" value="idiomas"> Atención en varios idiomas</label>
             </div>
           </div>
-
           <!-- STEP 3 -->
           <div class="fstep" data-step="3">
             <h3>Tu plan recomendado</h3>
@@ -655,13 +678,11 @@
             </div>
             <div class="field"><label>Algo más que debamos saber (opcional)</label><textarea id="fNote" rows="2" placeholder="Horario, sector, particularidades..."></textarea></div>
           </div>
-
           <div class="fnav">
             <button class="back" id="btnBack" disabled onclick="prevStep()">← Atrás</button>
             <button class="btn btn-primary" id="btnNext" onclick="nextStep()">Continuar →</button>
           </div>
         </div>
-
         <div class="form-success" id="formSuccess">
           <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
           <h3>Se ha abierto tu Gmail</h3>
@@ -672,7 +693,32 @@
     </div>
   </div>
 </section>
-
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que todo el mundo pregunta</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <h3>¿Suena a robot?</h3>
+        <p>Suena natural — pruébalo tú mismo en la demo antes de decidir nada.</p>
+      </div>
+      <div class="feat">
+        <h3>¿Es legal usar IA para llamadas?</h3>
+        <p>Sí. Callia cumple con el RGPD: tus datos y los de tus clientes se tratan conforme a la normativa europea.</p>
+      </div>
+      <div class="feat">
+        <h3>¿Qué pasa si tengo muchas llamadas?</h3>
+        <p>Nada — no limitamos minutos. Pagas tu plan y ya, sin sorpresas en la factura.</p>
+      </div>
+      <div class="feat">
+        <h3>¿Puedo cancelar cuando quiera?</h3>
+        <p>Sí, sin permanencia forzosa. Empiezas cuando quieras y te vas cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="final-cta" id="contacto">
   <div class="wrap">
     <span class="eyebrow" style="justify-content:center;">¿Listo?</span>
@@ -685,14 +731,12 @@
     <div class="alt">o escríbenos a <button onclick="gmailCompose('')">callia.labs@gmail.com</button></div>
   </div>
 </section>
-
 <footer>
   <div class="wrap foot-row">
     <div>© 2026 Callia · Todos los derechos reservados</div>
     <div><a href="#inicio">Inicio</a> &nbsp;·&nbsp; <a href="#funciones">Funciones</a> &nbsp;·&nbsp; <a href="#precios">Planes</a></div>
   </div>
 </footer>
-
 <script>
   // ---------- Gmail compose (web, never mailto) ----------
   function gmailCompose(subject, body){
@@ -702,11 +746,9 @@
       + (body ? '&body=' + encodeURIComponent(body) : '');
     window.open(url, '_blank', 'noopener');
   }
-
   // ---------- Smart form ----------
   let currentStep = 1;
   const totalSteps = 3;
-
   document.querySelectorAll('.opt input').forEach(inp=>{
     inp.addEventListener('change', ()=>{
       inp.closest('.opt').classList.toggle('checked', inp.checked);
@@ -716,7 +758,6 @@
       }
     });
   });
-
   function updateProgress(){
     document.querySelectorAll('.p-bar').forEach(bar=>{
       bar.classList.toggle('done', Number(bar.dataset.step) <= currentStep);
@@ -727,26 +768,21 @@
     document.getElementById('btnBack').disabled = currentStep === 1;
     document.getElementById('btnNext').textContent = currentStep === totalSteps ? 'Enviar por Gmail →' : 'Continuar →';
   }
-
   function computeRecommendation(){
     const volume = (document.querySelector('input[name="volume"]:checked') || {}).value || 'media';
     const features = Array.from(document.querySelectorAll('#featureOptions input:checked')).map(i=>i.value);
-
     let tierScore = { baja:0, media:1, alta:2, muyalta:3 }[volume] ?? 1;
     if(features.includes('salientes') || features.includes('crm') || features.includes('sedes')) tierScore = Math.max(tierScore, 2.5);
     else if(features.includes('whatsapp') || features.includes('calendar') || features.includes('vip')) tierScore = Math.max(tierScore, 1.5);
-
     let plan;
     if(tierScore >= 2.5) plan = { name:'Empresarial', price:'599€/mes', why:'Tu volumen de llamadas o funciones como CRM completo, llamadas salientes o varias sedes encajan mejor en el plan Empresarial.' };
     else if(tierScore >= 1.5) plan = { name:'Esencial', price:'299€/mes', why:'Agendado, WhatsApp automático o clientes VIP están incluidos en el plan Esencial, nuestro equilibrio favorito.' };
     else plan = { name:'Económico', price:'149€/mes', why:'Para tu volumen de llamadas y funciones básicas, el plan Económico ya cubre lo esencial.' };
-
     document.getElementById('recoName').textContent = plan.name;
     document.getElementById('recoPrice').textContent = plan.price + ' · Setup 199€ pago único';
     document.getElementById('recoWhy').textContent = plan.why;
     return plan;
   }
-
   function nextStep(){
     if(currentStep === 1 && !document.querySelector('input[name="volume"]:checked')){
       alert('Selecciona una opción para continuar.');
@@ -760,11 +796,9 @@
     }
     submitForm();
   }
-
   function prevStep(){
     if(currentStep > 1){ currentStep--; updateProgress(); }
   }
-
   function submitForm(){
     const name = document.getElementById('fName').value.trim();
     const email = document.getElementById('fEmail').value.trim();
@@ -779,27 +813,28 @@
     const volumeLabels = { baja:'Menos de 50/mes', media:'Entre 50 y 150/mes', alta:'Entre 150 y 400/mes', muyalta:'Más de 400/mes' };
     const features = Array.from(document.querySelectorAll('#featureOptions input:checked')).map(i=>i.closest('.opt').textContent.trim());
     const plan = computeRecommendation();
-
     const body =
 `Nuevo lead desde el formulario inteligente de Callia
 
 Nombre: ${name}
+
 Negocio: ${business || '—'}
+
 Email: ${email}
+
 Teléfono: ${phone || '—'}
 
 Volumen de llamadas: ${volumeLabels[volume] || volume}
+
 Funciones de interés: ${features.length ? features.join(', ') : '—'}
+
 Plan recomendado: ${plan.name} (${plan.price})
 
 Nota adicional: ${note || '—'}`;
-
     gmailCompose('Nuevo lead — ' + (business || name), body);
-
     document.getElementById('formActive').style.display = 'none';
     document.getElementById('formSuccess').classList.add('active');
   }
-
   function resetForm(){
     currentStep = 1;
     document.querySelectorAll('.opt input').forEach(i=>{ i.checked=false; i.closest('.opt').classList.remove('checked'); });
@@ -808,9 +843,7 @@ Nota adicional: ${note || '—'}`;
     document.getElementById('formSuccess').classList.remove('active');
     updateProgress();
   }
-
   updateProgress();
 </script>
-
 </body>
 </html>
